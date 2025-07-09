@@ -41,6 +41,8 @@ class UserController extends Controller
         if (!Hash::check($request->password, $user->password)) {
             return response()->json(['error' => 'Invalid password'], 401);
         }
+
+        
         $token = Helper::generateToken($user);
         return response()->json(['message' => 'Login successful', 'token' => $token], 200);
     }
